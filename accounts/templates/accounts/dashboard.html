@@ -21,6 +21,7 @@
             <th> Phone </th>
             {% for customer in customers %}
               <tr>
+                <td><a a class="btn btn-primary btn-sm btn-info" href= "{% url 'customer' customer.id %}" >View</a></td>
                 <td>{{customer.name}} </td>
                 <td>{{customer.phone}} </td>
               </tr>
@@ -52,9 +53,9 @@
           <td>{{order.customer}}</td>
           <td>{{order.status}} </td>
           <td>{{order.data_created}}</td>
-          <td><a href="">Update</a></td>
-          <td><a href="">Delete</a></td>
-          <td><a href="">EMAIL</a></td>
+          <td><a class="btn btn-primary btn-sm btn-info href="">Update</a></td>
+          <td><a class="btn btn-primary btn-sm btn-danger href="">Delete</a></td>
+          <td><a class="btn btn-primary btn-sm btn-info href="">EMAIL</a></td>
         </tr>
       {% endfor %}
 
