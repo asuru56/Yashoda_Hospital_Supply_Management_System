@@ -53,9 +53,9 @@
           <td>{{order.customer}}</td>
           <td>{{order.status}} </td>
           <td>{{order.data_created}}</td>
-          <td><a class="btn btn-primary btn-sm btn-info href="">Update</a></td>
-          <td><a class="btn btn-primary btn-sm btn-danger href="">Delete</a></td>
-          <td><a class="btn btn-primary btn-sm btn-info href="">EMAIL</a></td>
+          <td><a class="btn btn-primary btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
+          <td><a class="btn btn-primary btn-sm btn-danger" href="{% url 'delete_order' delete.id %}">Delete</a></td>
+          <td><a class="btn btn-primary btn-sm btn-info" href="">EMAIL</a></td>
         </tr>
       {% endfor %}
 
