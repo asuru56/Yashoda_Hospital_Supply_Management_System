@@ -9,8 +9,8 @@
 		<div class="card card-body">
 			<h5>Customer:</h5>
 			<hr>
-			<a class="btn btn-outline-info  btn-sm btn-block" href="">Update Customer</a>
-			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Customer</a>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'update_order' order.id%}">Update Customer</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'delete_order' order.id%}">Delete Customer</a>
 
 		</div>
 	</div>
@@ -19,8 +19,8 @@
 		<div class="card card-body">
 			<h5>Contact Information</h5>
 			<hr>
-			<p>Email: {{customer.email}}</p>
-			<p>Phone:{{customer.phone}} </p>
+			<p>Email: {{Customer.email}}</p>
+			<p>Phone:{{Customer.phone}} </p>
 		</div>
 	</div>
 
@@ -65,11 +65,11 @@
 
 				<tr>
 						<td>{{order.products}}</td>
-						<td>{{order.customer}}</td>
+						<td>{{order.Customer}}</td>
 						<td>{{order.data_created}}</td>
 						<td>{{order.status}}</td>
-						<td><a class ="btn btn-sm btn-info" href =" ">Update</a></td>
-						<td><a class ="btn btn-sm btn-danger" href =" ">Remove</a></td>
+						<td><a class ="btn btn-sm btn-info" href ="">Update</a></td>
+						<td><a class ="btn btn-sm btn-danger" href ="">Remove</a></td>
 				</tr>
 				{% endfor %}
 

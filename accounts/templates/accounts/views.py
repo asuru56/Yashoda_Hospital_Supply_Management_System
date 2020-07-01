@@ -8,14 +8,14 @@ from .forms import OrderForm
 
 def home(request):
 	orders = Order.objects.all()
-	customers = Customer.objects.all()
+	Customers = Customer.objects.all()
 
-	total_customers = customers.count()
+	total_Customers = Customers.count()
 	total_orders = orders.count()
 	delivered = orders.filter(status='Delivered').count()
 	pending = orders.filter(status = 'Pending').count()
 
-	context = {'orders': orders , 'customers':customers,
+	context = {'orders': orders , 'Customers':Customers,
 	'total_orders':total_orders, 'delivered':delivered,
 	'pending':pending}
 
@@ -26,12 +26,12 @@ def products(request):
 
 	return render(request, 'accounts/products.html' , {'products':products})
 
-def customer(request,pk_test):
-	customer = Customer.objects.get(id=pk_test)
-	orders = customer.order_set.all()
+def Customer(request , pk_test):
+	Customer = Customer.objects.get(id=pk)
+	orders = Customer.order_set.all()
 	orders_count = orders.count()
-	context = {'customer':customer,'orders':orders , 'orders_count':orders_count}
-	return render(request, 'accounts/customer.html',context)
+	context = {'Customer':Customer,'orders':orders , 'orders_count':orders_count}
+	return render(request, 'accounts/Customer.html', context)
 
 def createOrder(request):
 	form = OrderForm()
@@ -52,7 +52,6 @@ def updateOrder(request, pk):
 	if form.is_valid():
 		form.save()
 		return redirect('/')
-
 	context = {'form':form}
 	return render(request, 'accounts/order_form.html', context)
 
@@ -60,7 +59,6 @@ def deleteOrder(request, pk):
 	order = Order.objects.get(id=pk)
 	if request.method == "POST":
 		order.delete()
-			return redirect('/')
-
- context = {'item': order}
-		return render(request, 'accounts/delete.html', context)
+		return redirect('/')
+	context = {'item':order}
+	return render(request, 'accounts/delete.html', context)
