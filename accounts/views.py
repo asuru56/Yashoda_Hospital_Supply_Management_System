@@ -26,7 +26,7 @@ def products(request):
 
 	return render(request, 'accounts/products.html' , {'products':products})
 
-def customer(request,pk_test):
+def customer(request , pk_test):
 	customer = Customer.objects.get(id=pk_test)
 	orders = customer.order_set.all()
 	orders_count = orders.count()
@@ -47,20 +47,20 @@ def createOrder(request):
 	return render(request, 'accounts/order_form.html', context)
 
 def updateOrder(request, pk):
-	order = Order.objects.get(id=pk)
-	form = OrderForm(request.POST , instance=order)
-	if form.is_valid():
-		form.save()
-		return redirect('/')
-
-	context = {'form':form}
-	return render(request, 'accounts/order_form.html', context)
-
-def deleteOrder(request, pk):
-	order = Order.objects.get(id=pk)
-	if request.method == "POST":
-		order.delete()
+		order = Order.objects.get(id=pk)
+		form = OrderForm(request.POST , instance=order)
+		if form.is_valid():
+			form.save()
 			return redirect('/')
 
- context = {'item': order}
+		context = {'form':form}
+		return render(request, 'accounts/order_form.html', context)
+
+def deleteOrder(request, pk):
+		order = Order.objects.get(id=pk)
+		if request.method == "POST":
+			order.delete()
+			return redirect('/')
+
+		context = {'item': order}
 		return render(request, 'accounts/delete.html', context)
