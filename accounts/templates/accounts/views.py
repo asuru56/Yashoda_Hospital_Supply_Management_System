@@ -33,7 +33,7 @@ def customer(request , pk_test):
 	context = {'customer':customer,'orders':orders , 'orders_count':orders_count}
 	return render(request, 'accounts/customer.html',context)
 
-def createOrder(request):
+def createOrder(request, pk):
 	form = OrderForm()
 	if request.method == 'POST':
 		print("Printing POST: " , request.POST)
