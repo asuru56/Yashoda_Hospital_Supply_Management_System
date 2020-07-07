@@ -1,8 +1,12 @@
 import django_filters
+from django_filters import DateFilter
 
 from .models import *
 
 class OrderFilter(django_filters.FilterSet):
+    start_date = DateFilter( field_name="data_created", lookup_expr = 'gte')
+    end_date = DateFilter( field_name="data_created", lookup_expr = 'lte')
     class Meta:
         model = Order
-        filter ='__all__'
+        fields = '__all__'
+        exclude = ['customer','data_created','tags']
